@@ -1,1 +1,2 @@
-export { HealthController } from "./health";
+export { HealthController } from './health'
+export { UsersController } from './users'

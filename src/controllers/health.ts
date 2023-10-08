@@ -1,5 +1,5 @@
-import Elysia from "elysia";
+import Elysia from 'elysia'
 
-export const HealthController = new Elysia().get("/health", () => ({
-  status: "ok",
-}));
+export const HealthController = new Elysia().get('/health', () => ({
+  status: 'ok',
+}))

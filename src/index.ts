@@ -1,8 +1,5 @@
-import { Elysia } from "elysia";
-import { HealthController } from "./controllers";
+import { app } from './main'
 
-const app = new Elysia().use(HealthController).listen(3000);
+app.listen(3000)
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`)
