@@ -5,4 +5,6 @@ const api = new Elysia({
   prefix: '/api/v1',
 }).use(UsersController)
 
-export const app = new Elysia().use(HealthController).use(api)
+export const createApp = () => {
+  return new Elysia().use(HealthController).use(api)
+}

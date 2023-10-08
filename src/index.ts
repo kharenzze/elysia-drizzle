@@ -1,4 +1,6 @@
-import { app } from './main'
+import { createApp } from './main'
+
+const app = createApp()
 
 app.listen(3000)
 
