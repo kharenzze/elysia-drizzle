@@ -8,3 +8,5 @@ const api = new Elysia({
 export const createApp = () => {
   return new Elysia().use(HealthController).use(api)
 }
+
+export type App = ReturnType<typeof createApp>
