@@ -1,11 +1,12 @@
 import Elysia from 'elysia'
+import { UserModel } from '../models'
 
 export const UsersController = new Elysia({ prefix: '/users' })
-
-UsersController.post('/', async ctx => {})
-
-UsersController.get('/:id', async ctx => {})
-
-UsersController.get('/wip', async ctx => {
-  return 'wip'
-})
+  .use(UserModel)
+  .post('/', async ctx => {}, {
+    body: 'user.create-body',
+  })
+  .get('/:id', async ctx => {})
+  .get('/wip', async ctx => {
+    return 'wip'
+  })
