@@ -3,8 +3,10 @@ import { createApp, App } from '../main'
 
 let app: App
 
-beforeAll(() => {
-  app = createApp()
+beforeAll(async () => {
+  app = await createApp({
+    sqlitePath: ':memory:',
+  })
 })
 
 test('Health', async () => {

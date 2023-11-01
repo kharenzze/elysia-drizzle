@@ -1,10 +1,13 @@
 import { test, expect, beforeAll } from 'bun:test'
 import { createApp, App } from '../main'
+import type { UserData } from '../models/sqlite'
 
 let app: App
 
-beforeAll(() => {
-  app = createApp()
+beforeAll(async () => {
+  app = await createApp({
+    sqlitePath: ':memory:',
+  })
 })
 
 test('WIP', async () => {
@@ -33,4 +36,9 @@ test('User creation', async () => {
   req = getReq({ email: 'email@domain.com', password: 'asdASD$$33' })
   res = await app.handle(req)
   expect(res.status).toBe(200)
+  const data: UserData = await res.json()
+  expect(data.id).toBeString()
+  expect(data.id.length).toBeGreaterThan(0)
+  expect(data.email).toBe('email@domain.com')
+  expect(data.createdAt).toBeString()
 })

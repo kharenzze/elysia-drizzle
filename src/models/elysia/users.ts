@@ -10,4 +10,12 @@ export const UserModel = new Elysia().model({
       default: '',
     }),
   }),
+  'user.create-response': t.Object({
+    id: t.String(),
+    email: t.String({
+      format: 'email',
+      default: '',
+    }),
+    createdAt: t.String(),
+  }),
 })

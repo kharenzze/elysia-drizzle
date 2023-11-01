@@ -1,6 +1,8 @@
 import { createApp } from './main'
 
-const app = createApp()
+const app = await createApp({
+  sqlitePath: 'sqlite.db',
+})
 
 app.listen(3000)
 
