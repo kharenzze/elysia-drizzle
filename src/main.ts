@@ -1,5 +1,5 @@
 import { Elysia } from 'elysia'
-import { HealthController, UsersController } from './controllers'
+import { ErrorController, HealthController, UsersController } from './controllers'
 import { UserModel } from './models/elysia'
 import { createSqliteRepository, PasswordService } from './services'
 import { randomUUID } from 'crypto'
@@ -21,7 +21,10 @@ const createBaseApp = async (params: CreationParameters) => {
 export type BaseApp = Awaited<ReturnType<typeof createBaseApp>>
 
 const attachControllers = (baseApp: BaseApp) =>
-  baseApp.use(HealthController).group('/api/v1/users', app => app.use(UsersController))
+  baseApp
+    .use(ErrorController)
+    .use(HealthController)
+    .group('/api/v1/users', app => app.use(UsersController))
 
 export type App = ReturnType<typeof attachControllers>
 

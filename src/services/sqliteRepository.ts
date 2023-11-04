@@ -7,7 +7,9 @@ export const createSqliteRepository = async (dbPath: string = 'sqlite.db') => {
   const sqlite = new Database(dbPath, {
     create: true,
   })
-  const db = drizzle(sqlite)
+  const db = drizzle(sqlite, {
+    schema: models,
+  })
   await migrate(db, { migrationsFolder: './drizzle' })
   return {
     db,
